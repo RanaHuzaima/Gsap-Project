@@ -26,7 +26,7 @@ const App = () => {
 
     // Animation timeline
     const tl = gsap.timeline({
-      defaults: { duration: 0.5, ease: "power2.inOut" },
+      defaults: { duration: 0.5, ease: "power2.in" },
       repeat: -1,
       repeatDelay: 1,
       yoyo: true,
@@ -64,23 +64,6 @@ const App = () => {
       trigger: ".animation-container",
       start: "top center",
       animation: tl,
-    });
-
-    // Pause and resume on hover
-    const cards = document.querySelectorAll(".card");
-
-    cards.forEach((card) => {
-      card.addEventListener("mouseenter", () => {
-        tl.pause();
-        gsap.to(card, { rotation: 0, duration: 0.5 });
-      });
-
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, { clearProps: "rotation", duration: 0.5 });
-        setTimeout(() => {
-          tl.resume();
-        }, 2000); // Delay before resuming the animation
-      });
     });
 
     // Logo animation
